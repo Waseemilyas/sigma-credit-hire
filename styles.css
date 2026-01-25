@@ -1,24 +1,25 @@
 /* ==========================================================================
    Sigma Credit Hire - Stylesheet
-   Modern, clean, professional design
+   Modern, clean, professional design with red accent
    ========================================================================== */
 
-/* CSS Variables - Easy theming */
+/* CSS Variables - Red theme to match logo */
 :root {
-    /* Colors */
-    --color-primary: #1a365d;      /* Deep navy blue */
-    --color-primary-light: #2c5282;
-    --color-primary-dark: #0f2744;
-    --color-accent: #3182ce;       /* Bright blue accent */
-    --color-accent-light: #63b3ed;
+    /* Colors - Red theme */
+    --color-primary: #1a1a1a;          /* Dark charcoal/black */
+    --color-primary-light: #333333;
+    --color-primary-dark: #000000;
+    --color-accent: #c41e3a;           /* Sigma red */
+    --color-accent-light: #e63950;
+    --color-accent-dark: #9a1830;
     
     --color-text: #1a202c;
     --color-text-light: #4a5568;
     --color-text-muted: #718096;
     
     --color-bg: #ffffff;
-    --color-bg-alt: #f7fafc;
-    --color-bg-dark: #1a365d;
+    --color-bg-alt: #f8f9fa;
+    --color-bg-dark: #1a1a1a;
     
     --color-border: #e2e8f0;
     
@@ -42,7 +43,7 @@
     /* Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
     
     /* Border radius */
     --radius-sm: 4px;
@@ -67,7 +68,7 @@ html {
 body {
     font-family: var(--font-family);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--color-text);
     background-color: var(--color-bg);
 }
@@ -78,8 +79,8 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-text);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
+h1 { font-size: 2.75rem; }
+h2 { font-size: 2.25rem; }
 h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 
@@ -94,7 +95,7 @@ a {
 }
 
 a:hover {
-    color: var(--color-primary);
+    color: var(--color-accent-dark);
 }
 
 img {
@@ -132,7 +133,7 @@ img {
 
 .section-divider {
     width: 60px;
-    height: 3px;
+    height: 4px;
     background: var(--color-accent);
     margin: 0 auto;
     border-radius: 2px;
@@ -156,25 +157,41 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    height: 80px;
 }
 
 .logo {
     display: flex;
-    align-items: baseline;
-    gap: 0.3rem;
-    font-weight: 700;
-    font-size: 1.4rem;
+    align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
 }
 
+.logo-icon {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    font-family: 'Times New Roman', serif;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
 .logo-sigma {
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--color-primary);
+    letter-spacing: 1px;
 }
 
 .logo-credit {
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--color-accent);
-    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .nav-links {
@@ -199,6 +216,10 @@ img {
     height: 2px;
     background: var(--color-accent);
     transition: width var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--color-accent);
 }
 
 .nav-links a:hover::after {
@@ -232,15 +253,38 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    background: linear-gradient(135deg, var(--color-primary) 0%, #2d2d2d 50%, var(--color-primary-dark) 100%);
     color: white;
     text-align: center;
     padding: var(--spacing-xl) 0;
-    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" x="50" font-size="80" text-anchor="middle" fill="rgba(196,30,58,0.05)" font-family="serif">Σ</text></svg>');
+    background-size: 200px 200px;
+    opacity: 0.5;
 }
 
 .hero-content {
     max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    font-size: 5rem;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-sm);
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
 }
 
 .hero h1 {
@@ -251,9 +295,12 @@ img {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     opacity: 0.9;
     margin-bottom: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ==========================================================================
@@ -262,7 +309,7 @@ img {
 
 .btn {
     display: inline-block;
-    padding: 0.875rem 2rem;
+    padding: 1rem 2.5rem;
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
@@ -270,18 +317,31 @@ img {
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: all var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn-primary {
-    background: white;
-    color: var(--color-primary);
+    background: var(--color-accent);
+    color: white;
 }
 
 .btn-primary:hover {
     background: var(--color-accent-light);
     color: white;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--color-primary);
 }
 
 /* ==========================================================================
@@ -300,33 +360,45 @@ img {
     margin-bottom: var(--spacing-md);
 }
 
+.about-content p:last-child {
+    margin-bottom: 0;
+}
+
 /* ==========================================================================
    Services Section
    ========================================================================== */
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-md);
 }
 
 .service-card {
     background: white;
-    padding: var(--spacing-md);
+    padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     text-align: center;
     box-shadow: var(--shadow-md);
     transition: transform var(--transition), box-shadow var(--transition);
+    border-top: 4px solid var(--color-accent);
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
 }
 
 .service-icon {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-sm);
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-sm);
+    font-size: 1.75rem;
 }
 
 .service-card h3 {
@@ -340,11 +412,49 @@ img {
 }
 
 /* ==========================================================================
+   Features Section
+   ========================================================================== */
+
+.features {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-lg) 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+.feature-item {
+    padding: var(--spacing-sm);
+}
+
+.feature-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xs);
+}
+
+.feature-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
    Contact Section
    ========================================================================== */
 
 .contact-grid {
-    max-width: 600px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -358,34 +468,42 @@ img {
     display: flex;
     align-items: flex-start;
     gap: var(--spacing-sm);
-    padding: var(--spacing-sm);
-    background: var(--color-bg-alt);
+    padding: var(--spacing-md);
+    background: white;
     border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+}
+
+.contact-item:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .contact-icon {
-    font-size: 1.5rem;
     width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-primary);
+    background: var(--color-accent);
+    color: white;
     border-radius: var(--radius-md);
     flex-shrink: 0;
+    font-size: 1.25rem;
 }
 
 .contact-item h4 {
     color: var(--color-primary);
     margin-bottom: 0.25rem;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
 .contact-item p {
     margin: 0;
     color: var(--color-text);
+    font-size: 1.05rem;
 }
 
 .contact-item a {
@@ -397,6 +515,24 @@ img {
     color: var(--color-accent);
 }
 
+.contact-cta {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.contact-cta h3 {
+    color: white;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-cta p {
+    opacity: 0.9;
+    margin-bottom: var(--spacing-md);
+}
+
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -404,35 +540,51 @@ img {
 .footer {
     background: var(--color-bg-dark);
     color: white;
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-lg) 0 var(--spacing-md);
 }
 
 .footer-content {
     text-align: center;
 }
 
-.footer-company {
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-logo-icon {
+    font-size: 1.75rem;
+    color: var(--color-accent);
+    font-family: 'Times New Roman', serif;
+    font-weight: 700;
+}
+
+.footer-logo-text {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: var(--spacing-sm);
 }
 
 .footer-details {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--spacing-sm) var(--spacing-md);
-    margin-bottom: var(--spacing-sm);
-    opacity: 0.8;
+    gap: var(--spacing-xs) var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .footer-details p {
     margin: 0;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
 
 .footer-copyright {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     opacity: 0.6;
     margin: 0;
 }
@@ -445,8 +597,17 @@ img {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     
+    .hero {
+        min-height: auto;
+        padding: 120px 0 var(--spacing-xl);
+    }
+    
+    .hero-logo {
+        font-size: 3.5rem;
+    }
+    
     .hero h1 {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
     
     .hero-subtitle {
@@ -459,7 +620,7 @@ img {
     
     .nav-links {
         position: absolute;
-        top: 70px;
+        top: 80px;
         left: 0;
         right: 0;
         background: white;
@@ -503,6 +664,14 @@ img {
         flex-direction: column;
         gap: var(--spacing-xs);
     }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
@@ -516,5 +685,13 @@ img {
     
     .services-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        width: 100%;
     }
 }
