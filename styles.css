@@ -197,28 +197,29 @@ img {
 }
 
 .logo-icon {
-    font-size: 2.25rem;
+    font-size: 2.75rem;
     font-weight: 700;
     color: var(--color-accent);
     font-family: 'Times New Roman', Georgia, serif;
     text-shadow: 0 2px 10px var(--color-accent-glow);
+    line-height: 1;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+    line-height: 1.15;
 }
 
 .logo-sigma {
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: white;
     letter-spacing: 2px;
+    transition: color var(--transition);
 }
 
-.nav.scrolled .logo-sigma,
-.hero ~ * .logo-sigma {
+.nav.scrolled .logo-sigma {
     color: var(--color-primary);
 }
 
@@ -604,6 +605,11 @@ img {
     flex-shrink: 0;
     font-size: 1.25rem;
     box-shadow: 0 4px 15px var(--color-accent-glow);
+}
+
+.contact-icon-alt {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .contact-item h4 {
