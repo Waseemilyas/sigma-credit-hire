@@ -23,12 +23,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Favicon (placeholder - update with actual favicon) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' x='20' font-size='80' fill='%23c41e3a' font-family='serif'>Σ</text></svg>">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav" id="nav">
         <div class="container nav-container">
             <a href="#" class="logo">
                 <span class="logo-icon">Σ</span>
@@ -54,7 +54,7 @@
     <header class="hero" id="home">
         <div class="container hero-content">
             <div class="hero-logo">Σ</div>
-            <h1>Accident Claims & Replacement Vehicle Hire</h1>
+            <h1>Accident Claims &<br>Replacement Vehicle Hire</h1>
             <p class="hero-subtitle">Professional credit hire services for non-fault accidents. Serving Bolton, Manchester, and the surrounding areas.</p>
             <a href="#contact" class="btn btn-primary">Get in Touch</a>
         </div>
@@ -63,11 +63,11 @@
     <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>About Sigma Credit Hire</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="about-content">
+            <div class="about-content reveal">
                 <p>Sigma Credit Hire Ltd provides professional credit hire and accident management services across Bolton, Greater Manchester, and beyond. We specialise in providing like-for-like replacement vehicles to drivers who have been involved in non-fault accidents.</p>
                 <p>Our experienced team handles everything from the initial claim through to vehicle return, working directly with insurers and solicitors to ensure a smooth, stress-free experience. When you're not at fault, you shouldn't be left without transport—that's where we come in.</p>
                 <p>Whether you need a standard vehicle, taxi, or specialist transport, we're here to keep you moving while your claim is processed.</p>
@@ -79,19 +79,19 @@
     <section class="features">
         <div class="container">
             <div class="features-grid">
-                <div class="feature-item">
+                <div class="feature-item reveal">
                     <div class="feature-number">24/7</div>
                     <div class="feature-label">Support Available</div>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item reveal">
                     <div class="feature-number">100%</div>
                     <div class="feature-label">No Fault, No Cost</div>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item reveal">
                     <div class="feature-number">Fast</div>
                     <div class="feature-label">Vehicle Delivery</div>
                 </div>
-                <div class="feature-item">
+                <div class="feature-item reveal">
                     <div class="feature-number">Free</div>
                     <div class="feature-label">Claims Advice</div>
                 </div>
@@ -102,22 +102,22 @@
     <!-- Services Section -->
     <section class="section section-alt" id="services">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>Our Services</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">🚗</div>
                     <h3>Replacement Vehicles</h3>
                     <p>Like-for-like replacement vehicles provided quickly and efficiently while your car is being repaired following a non-fault accident.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">📋</div>
                     <h3>Claims Management</h3>
                     <p>Full accident claims support from start to finish. We handle the paperwork and liaise with all parties on your behalf.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon">🚕</div>
                     <h3>Taxi & Private Hire</h3>
                     <p>Specialist replacement vehicles for taxi drivers, including licensed hackney carriages and private hire vehicles.</p>
@@ -129,13 +129,13 @@
     <!-- Contact Section -->
     <section class="section" id="contact">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>Contact Us</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-item reveal">
                         <div class="contact-icon">📞</div>
                         <div>
                             <h4>Phone</h4>
@@ -145,14 +145,14 @@
                             </p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item reveal">
                         <div class="contact-icon">✉️</div>
                         <div>
                             <h4>Email</h4>
                             <p><a href="mailto:sigmahire1@gmail.com">sigmahire1@gmail.com</a></p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item reveal">
                         <div class="contact-icon">📍</div>
                         <div>
                             <h4>Address</h4>
@@ -160,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-cta">
+                <div class="contact-cta reveal">
                     <h3>Been in an accident?</h3>
                     <p>If you've been involved in a non-fault accident, get in touch today. We'll guide you through the process and get you back on the road.</p>
                     <a href="tel:+447516211991" class="btn btn-primary">Call Now</a>
@@ -191,6 +191,7 @@
         // Mobile navigation toggle
         const navToggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
+        const nav = document.querySelector('.nav');
         
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -211,20 +212,55 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const navHeight = document.querySelector('.nav').offsetHeight;
+                    const navHeight = nav.offsetHeight;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
                     window.scrollTo({ top: targetPosition, behavior: 'smooth' });
                 }
             });
         });
 
-        // Navbar background on scroll
+        // Navbar glassmorphism on scroll
+        let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
             } else {
-                nav.style.boxShadow = '0 1px 2px rgba(0,0,0,0.05)';
+                nav.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            
+            revealElements.forEach((el, index) => {
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    // Stagger animation for grid items
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, index * 50);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Parallax effect on hero (subtle)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.setProperty('--parallax', `${scrolled * 0.3}px`);
             }
         });
     </script>
