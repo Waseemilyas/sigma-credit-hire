@@ -16,3 +16,7 @@ node_modules/
 # Build output
 dist/
 build/
+.DS_Store
+
+# Internal project notes
+README.md
